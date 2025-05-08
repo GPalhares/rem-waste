@@ -1,0 +1,24 @@
+@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply min-h-screen bg-zinc-900 text-zinc-100 flex flex-col items-center justify-center;
+}
+
+#root {
+  @apply flex flex-col items-center justify-center min-h-screen w-full; 
+}
+
+.main-container {
+  @apply flex flex-col items-center justify-center w-full max-w-4xl mx-auto px-4 py-8;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @apply font-bold text-zinc-100;
+}
+
+button {
+  @apply rounded-lg px-6 py-2 bg-blue-600 text-white font-semibold shadow hover:bg-blue-700 transition;
+}
