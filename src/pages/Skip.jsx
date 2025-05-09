@@ -34,7 +34,7 @@ export default function Skip() {
       <Header />
       <Stepper />
 
-      <div className="flex flex-wrap gap-2 justify-end mb-6 w-full">
+      <div className="flex py-5 flex-wrap gap-2 justify-end mb-6 w-full">
         {FILTERS.map((f) => (
           <button
             key={f.value}

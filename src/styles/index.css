@@ -5,20 +5,20 @@
 
 @layer base {
   :root {
-    --color-background: #f8fafc;
-    --color-foreground: #1e293b;
-    --color-primary: #2563eb;
-    --color-secondary: #64748b;
-    --color-accent: #fbbf24;
-    --color-muted: #e2e8f0;
+    --color-background: #f9fafb;        /* softer white */
+    --color-foreground: #1f2937;        /* slate-800 */
+    --color-primary: #f97316;           /* orange-500 (vivid and warm) */
+    --color-secondary: #475569;         /* slate-600 */
+    --color-accent: #10b981;            /* emerald-500 (used for success) */
+    --color-muted: #e5e7eb;             /* gray-200 for subtle backgrounds */
   }
   .dark {
-    --color-background: #0a0f1a;
-    --color-foreground: #f1f5f9;
-    --color-primary: #60a5fa;
-    --color-secondary: #94a3b8;
-    --color-accent: #f59e42;
-    --color-muted: #334155;
+    --color-background: #0f172a;        /* slate-900 */
+    --color-foreground: #f8fafc;        /* very light for readability */
+    --color-primary: #fb923c;           /* orange-400 (slightly softer in dark) */
+    --color-secondary: #94a3b8;         /* slate-400 */
+    --color-accent: #34d399;            /* emerald-400 */
+    --color-muted: #1e293b;             /* slate-800 */
   }
   body {
     @apply bg-[var(--color-background)] text-[var(--color-foreground)] transition-colors duration-300 min-h-screen flex flex-col items-center justify-center;
