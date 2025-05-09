@@ -1,3 +1,4 @@
+import React from "react";
 import {
   CheckCircle,
   Shield,
@@ -21,8 +22,8 @@ const SELECTED_STEP = 2;
 
 export default function Stepper() {
   return (
-    <nav className="w-full bg-zinc-900 py-2 px-1 flex justify-center shadow-md sticky top-0 z-50 border-b border-zinc-800">
-      <ol className="flex items-center justify-center gap-2 sm:gap-4 w-full max-w-6xl overflow-x-auto scrollbar-thin scrollbar-thumb-zinc-700 scrollbar-track-zinc-900 px-1 sm:px-0">
+    <nav className="w-full bg-[var(--color-background)] border-b border-[var(--color-muted)] py-2 px-1 flex justify-center shadow-md sticky top-[56px] z-40">
+      <ol className="flex items-center justify-center gap-2 sm:gap-4 w-full max-w-6xl overflow-x-auto scrollbar-thin scrollbar-thumb-[var(--color-muted)] scrollbar-track-[var(--color-background)] px-1 sm:px-0">
         {steps.map((step, idx) => {
           const isActive = idx === SELECTED_STEP;
           const isCompleted = idx < SELECTED_STEP;
@@ -44,25 +45,33 @@ export default function Stepper() {
                   className={`flex items-center justify-center w-8 h-8 sm:w-10 sm:h-10 rounded-full border-2 transition-all duration-300
                     ${
                       isActive
-                        ? "bg-blue-600/30 border-blue-500 shadow-lg shadow-blue-900/20"
+                        ? "bg-[var(--color-primary)]/20 border-[var(--color-primary)] shadow-lg"
                         : ""
                     }
-                    ${isCompleted ? "bg-blue-500/20 border-blue-400" : ""}
-                    ${isUpcoming ? "bg-zinc-800 border-zinc-700" : ""}
+                    ${
+                      isCompleted
+                        ? "bg-[var(--color-primary)]/10 border-[var(--color-primary)]"
+                        : ""
+                    }
+                    ${
+                      isUpcoming
+                        ? "text-[var(--color-muted)] border-[var(--color-muted)] bg-[var(--color-muted)]/30"
+                        : ""
+                    }
                   `}
                   tabIndex={0}
                 >
                   {isCompleted ? (
-                    <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-blue-400 animate-pulse" />
+                    <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6 text-[var(--color-primary)] animate-pulse" />
                   ) : (
                     <Icon
                       className={`w-5 h-5 sm:w-6 sm:h-6 transition-colors duration-300
                         ${
                           isActive
-                            ? "text-blue-300"
+                            ? "text-[var(--color-primary)]"
                             : isUpcoming
-                            ? "text-zinc-500"
-                            : "text-blue-200"
+                            ? "text-[var(--color-muted)]"
+                            : "text-[var(--color-primary)]/80"
                         }
                       `}
                     />
@@ -72,17 +81,17 @@ export default function Stepper() {
                   className={`mt-1 text-xs sm:text-sm font-medium whitespace-nowrap transition-colors duration-300
                     ${
                       isActive
-                        ? "text-blue-200"
+                        ? "text-[var(--color-primary)]"
                         : isCompleted
-                        ? "text-blue-300"
-                        : "text-zinc-500"
+                        ? "text-[var(--color-primary)]/80"
+                        : "text-[var(--color-secondary)]"
                     }
                   `}
                 >
                   {step.label}
                 </span>
                 {/* Tooltip for compact views */}
-                <span className="absolute left-1/2 -translate-x-1/2 top-12 z-10 hidden group-hover:block bg-zinc-800 text-zinc-100 text-xs rounded px-2 py-1 shadow-lg whitespace-nowrap">
+                <span className="absolute left-1/2 -translate-x-1/2 top-12 z-10 hidden group-hover:block bg-[var(--color-background)] text-[var(--color-foreground)] text-xs rounded px-2 py-1 shadow-lg whitespace-nowrap border border-[var(--color-muted)]">
                   {step.label}
                 </span>
               </div>
@@ -92,10 +101,10 @@ export default function Stepper() {
                   className={`h-0.5 w-4 sm:w-8 transition-colors duration-300 rounded-full
                     ${
                       isCompleted
-                        ? "bg-blue-500"
+                        ? "bg-[var(--color-primary)]"
                         : isActive
-                        ? "bg-zinc-500"
-                        : "bg-zinc-700"
+                        ? "bg-[var(--color-muted)]"
+                        : "bg-[var(--color-muted)]/60"
                     }
                   `}
                 />

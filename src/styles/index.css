@@ -3,19 +3,41 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  @apply min-h-screen bg-zinc-900 text-zinc-100 flex flex-col items-center justify-center;
+@layer base {
+  :root {
+    --color-background: #f8fafc;
+    --color-foreground: #1e293b;
+    --color-primary: #2563eb;
+    --color-secondary: #64748b;
+    --color-accent: #fbbf24;
+    --color-muted: #e2e8f0;
+  }
+  .dark {
+    --color-background: #0a0f1a;
+    --color-foreground: #f1f5f9;
+    --color-primary: #60a5fa;
+    --color-secondary: #94a3b8;
+    --color-accent: #f59e42;
+    --color-muted: #334155;
+  }
+  body {
+    @apply bg-[var(--color-background)] text-[var(--color-foreground)] transition-colors duration-300 min-h-screen flex flex-col items-center justify-center;
+  }
 }
 
 #root {
-  @apply flex flex-col items-center justify-center min-h-screen w-full; 
+  @apply flex flex-col items-center justify-center min-h-screen w-full;
 }
 
 .main-container {
-  @apply flex flex-col items-center justify-center w-full max-w-7xl mx-auto px-4 py-8; /* Aumentado de 4xl para 7xl */
+  @apply flex flex-col items-center justify-center w-full max-w-7xl mx-auto px-4 py-8;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  @apply font-bold text-zinc-100;
+  @apply font-bold text-[var(--color-foreground)] dark:text-[var(--color-foreground)];
+}
+
+button {
+  @apply transition-colors duration-200;
 }
 
