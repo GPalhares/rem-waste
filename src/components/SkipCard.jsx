@@ -1,5 +1,5 @@
 import React from "react";
-import { Truck } from "lucide-react";
+import { Truck, Clock } from "lucide-react";
 import Tags from "./Tags";
 import CustomButton from "./CustomButton";
 
@@ -27,13 +27,15 @@ export default function SkipCard({ skip, isSelected, onSelect }) {
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2 text-lg font-semibold text-zinc-800 dark:text-white">
           <Truck className="w-5 h-5 text-primary dark:text-blue-400" />
-          <span>{skip.size} Yard Skip</span>
+          <span>{skip.size}-Yard Skip Hire</span>
         </div>
-        <span className="text-xs px-2 py-0.5 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300">
-          {skip.hire_period_days} days
-        </span>
+        <div className="flex items-center gap-1 text-xs px-2 py-0.5 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300">
+          <Clock className="w-3.5 h-3.5" />
+          <span>{skip.hire_period_days} days</span>
+        </div>
       </div>
 
+      {/* Tags */}
       <Tags skip={skip} />
 
       {/* Price & Image */}
@@ -55,10 +57,10 @@ export default function SkipCard({ skip, isSelected, onSelect }) {
         />
       </div>
 
+      {/* Select Button */}
       <CustomButton
         className="mt-auto"
         onClick={onSelect}
-        disabled={isSelected}
         isActive={isSelected}
       >
         {isSelected ? "Selected" : "Select This Skip"}

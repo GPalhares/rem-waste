@@ -1,14 +1,35 @@
 import React from "react";
 import { Sun, Moon } from "lucide-react";
 import useTheme from "../hooks/useTheme";
+import { useLocation } from "react-router-dom";
 
 export default function Header() {
   const { theme, toggleTheme } = useTheme();
+  const location = useLocation();
+
+  const getTitle = () => {
+    switch (location.pathname) {
+      case "/skip":
+        return "Select Your Skip";
+      case "/postcode":
+        return "Enter Your Postcode";
+      case "/waste-type":
+        return "Select Waste Type";
+      case "/permit":
+        return "Permit Check";
+      case "/date":
+        return "Choose Collection Date";
+      case "/payment":
+        return "Payment Details";
+      default:
+        return "Skip Hire";
+    }
+  };
 
   return (
     <header className="w-full flex items-center justify-between px-4 py-3 border-b border-[var(--color-muted)] sticky top-0 z-[60] backdrop-blur bg-transparent">
       <div className="flex items-center gap-2 text-lg font-semibold tracking-wide select-none text-[var(--color-primary)] dark:text-[var(--color-primary)]">
-        Select Your Skip Size
+        {getTitle()}
       </div>
 
       <button

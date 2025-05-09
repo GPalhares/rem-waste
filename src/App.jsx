@@ -1,14 +1,20 @@
 import { BrowserRouter } from "react-router-dom";
 import { AppRoutes } from "./router";
+import Layout from "./components/Layout";
+import { SkipProvider } from "./context/SkipContext";
 
 export default function App() {
   return (
     <BrowserRouter>
-      <div className="min-h-screen">
-        <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <AppRoutes />
+      <SkipProvider>
+        <div className="min-h-screen w-full">
+          <Layout>
+            <div className="w-full px-4 sm:px-6 lg:px-8">
+              <AppRoutes />
+            </div>
+          </Layout>
         </div>
-      </div>
+      </SkipProvider>
     </BrowserRouter>
   );
 }
