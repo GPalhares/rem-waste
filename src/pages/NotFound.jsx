@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import CustomButton from "../components/CustomButton";
+import CustomButton from "../components/ui/CustomButton";
 import { ArrowLeft, Github, Linkedin, Globe, Mail } from "lucide-react";
 
 export default function NotFound() {

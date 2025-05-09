@@ -1,6 +1,6 @@
 // components/Filter.jsx
 import React, { useState, useMemo, useEffect } from "react";
-import CustomButton from "./CustomButton";
+import CustomButton from "../ui/CustomButton";
 
 const FILTERS = [
   { label: "All", value: "all" },

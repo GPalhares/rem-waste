@@ -1,6 +1,6 @@
 import { BrowserRouter } from "react-router-dom";
 import { AppRoutes } from "./router";
-import Layout from "./components/Layout";
+import Layout from "./components/layout/Layout";
 import { SkipProvider } from "./context/SkipContext";
 
 export default function App() {

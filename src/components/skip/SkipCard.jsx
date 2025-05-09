@@ -1,7 +1,7 @@
 import React from "react";
 import { Truck, Clock, Check } from "lucide-react";
 import Tags from "./Tags";
-import CustomButton from "./CustomButton";
+import CustomButton from "../ui/CustomButton";
 
 const skipImages = {
   "4 Yard Skip": "/images/4-Yard-skip.png",

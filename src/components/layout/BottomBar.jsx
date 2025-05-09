@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
-import CustomButton from "./CustomButton";
+import CustomButton from "../ui/CustomButton";
 
 export default function BottomBar({ price, onContinue, onBack }) {
   return (

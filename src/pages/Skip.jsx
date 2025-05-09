@@ -1,11 +1,11 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import useSkipOptions from "../hooks/useSkipOptions";
-import SkipCard from "../components/SkipCard";
-import Filter from "../components/Filter";
+import SkipCard from "../components/skip/SkipCard";
+import Filter from "../components/skip/Filter";
 import { useSkip } from "../context/SkipContext";
-import Loading from "../components/Loading";
-import BottomBar from "../components/BottomBar";
+import Loading from "../components/ui/Loading";
+import BottomBar from "../components/layout/BottomBar";
 
 export default function Skip() {
   const navigate = useNavigate();
