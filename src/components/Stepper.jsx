@@ -90,7 +90,7 @@ export default function Stepper() {
             return (
               <li
                 key={step.label}
-                className={`relative flex items-center text-gray-500 dark:text-gray-400 space-x-2.5 rtl:space-x-reverse z-10 flex-col sm:flex-row mx-2 sm:mx-4 min-w-[80px] sm:min-w-[151px] cursor-pointer`}
+                className={`relative flex items-center text-gray-500 space-x-2.5 rtl:space-x-reverse z-10 flex-col sm:flex-row mx-2 sm:mx-4 min-w-[80px] sm:min-w-[151px] cursor-pointer`}
                 onClick={() => handleStepClick(step.path)}
               >
                 <span

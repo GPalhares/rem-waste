@@ -35,7 +35,7 @@ export default function Skip() {
     );
 
   return (
-    <div className="w-full pb-24">
+    <div className="w-full pb-24 min-h-screen">
       <Filter options={options} onChange={setFilteredOptions} />
 
       <div className="flex-grow grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full place-items-center">

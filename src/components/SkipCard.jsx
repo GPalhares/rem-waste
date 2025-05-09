@@ -1,5 +1,5 @@
 import React from "react";
-import { Truck, Clock } from "lucide-react";
+import { Truck, Clock, Check } from "lucide-react";
 import Tags from "./Tags";
 import CustomButton from "./CustomButton";
 
@@ -18,53 +18,77 @@ const skipImages = {
 export default function SkipCard({ skip, isSelected, onSelect }) {
   return (
     <div
-      className={`w-[380px] h-[300px] bg-white dark:bg-zinc-900 rounded-2xl shadow-md p-4 flex flex-col gap-2 transition-transform duration-200 ease-in-out hover:scale-[1.01] ${
-        isSelected ? "ring-2 ring-[var(--color-primary)]" : ""
-      }`}
       onClick={onSelect}
+      className={`relative w-full max-w-sm cursor-pointer transition-all duration-200 rounded-xl ${
+        isSelected
+          ? "ring-2 ring-[var(--color-primary)]"
+          : "hover:ring-2 hover:ring-[var(--color-border)]"
+      }`}
     >
-      {/* Header */}
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2 text-lg font-semibold text-zinc-800 dark:text-white">
-          <Truck className="w-5 h-5 text-primary dark:text-blue-400" />
-          <span>{skip.size}-Yard Skip Hire</span>
-        </div>
-        <div className="flex items-center gap-1 text-xs px-2 py-0.5 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300">
-          <Clock className="w-3.5 h-3.5" />
-          <span>{skip.hire_period_days} days</span>
-        </div>
-      </div>
-
-      {/* Tags */}
-      <Tags skip={skip} />
-
-      {/* Price & Image */}
-      <div className="flex-grow flex items-center justify-between gap-4">
-        <div>
-          <div className="text-4xl font-bold text-green-600 dark:text-green-400">
-            £{skip.price_before_vat}
-          </div>
-          <div className="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">
-            + VAT: {skip.vat}%
-          </div>
-        </div>
-        <img
-          src={
-            skipImages[`${skip.size} Yard Skip`] || "/images/4-Yard-skip.png"
-          }
-          alt={`${skip.size} Yard Skip`}
-          className="w-32 h-24 object-contain rounded-lg dark:bg-zinc-800 p-1"
-        />
-      </div>
-
-      {/* Select Button */}
-      <CustomButton
-        className="mt-auto"
-        onClick={onSelect}
-        isActive={isSelected}
+      <div
+        className={`rounded-xl overflow-hidden border ${
+          isSelected
+            ? "border-[var(--color-primary)]"
+            : "border-[var(--color-border)]"
+        } bg-[var(--color-background)]`}
       >
-        {isSelected ? "Selected" : "Select This Skip"}
-      </CustomButton>
+        <div className="aspect-[21/9] relative bg-[var(--color-background)]">
+          <img
+            src={
+              skipImages[`${skip.size} Yard Skip`] || "/images/4-Yard-skip.png"
+            }
+            alt={`${skip.size} Yard Skip`}
+            className="w-full h-full object-contain p-4"
+          />
+          {isSelected && (
+            <div className="absolute inset-0 bg-[var(--color-primary)]/20 flex items-center justify-center">
+              <div className="w-8 h-8 rounded-full bg-[var(--color-primary)] shadow-md flex items-center justify-center">
+                <Check className="w-5 h-5 text-white" />
+              </div>
+            </div>
+          )}
+        </div>
+
+        <div className="p-4 space-y-3">
+          {/* Title + Days */}
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <Truck className="w-5 h-5 text-[var(--color-primary)]" />
+              <h3 className="text-lg font-semibold text-[var(--color-foreground)]">
+                {skip.size}-Yard Skip
+              </h3>
+            </div>
+            <div className="flex items-center gap-1 text-xs px-2 py-1 rounded-full bg-[var(--color-muted)] text-[var(--color-secondary)]">
+              <Clock className="w-3.5 h-3.5" />
+              <span>{skip.hire_period_days} days</span>
+            </div>
+          </div>
+
+          <Tags skip={skip} />
+
+          {/* Price and Button */}
+          <div className="flex items-center justify-between mt-2">
+            <div className="flex flex-col">
+              <span className="text-xl font-bold text-[var(--color-accent)]">
+                £{skip.price_before_vat}
+              </span>
+              <span className="text-sm text-[var(--color-secondary)]">
+                + VAT: {skip.vat}%
+              </span>
+            </div>
+            <CustomButton
+              onClick={(e) => {
+                e.stopPropagation();
+                onSelect();
+              }}
+              isActive={isSelected}
+              className="text-sm py-1.5 px-3"
+            >
+              {isSelected ? "Selected" : "Select"}
+            </CustomButton>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

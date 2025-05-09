@@ -5,19 +5,17 @@ import CustomButton from "./CustomButton";
 
 export default function BottomBar({ price, onContinue, onBack }) {
   return (
-    <div className="fixed bottom-0 left-0 right-0 bg-white/80 dark:bg-zinc-900/80 backdrop-blur-lg border-t border-gray-200 dark:border-zinc-800 p-6 z-50">
+    <div className="fixed bottom-0 left-0 right-0 bg-[var(--color-background)]/90 backdrop-blur-lg border-t border-[var(--color-border)] p-6 z-50">
       <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
         <div className="flex flex-col sm:flex-row items-center gap-1 sm:gap-3">
-          <span className="text-sm font-medium text-gray-500 dark:text-gray-400">
+          <span className="text-sm font-medium text-[var(--color-secondary)]">
             Selected Skip Total
           </span>
           <div className="flex items-baseline gap-1">
-            <span className="text-4xl font-bold text-green-600 dark:text-green-500">
+            <span className="text-4xl font-bold text-[var(--color-accent)]">
               £{price}
             </span>
-            <span className="text-sm text-gray-500 dark:text-gray-400">
-              + VAT
-            </span>
+            <span className="text-sm text-[var(--color-secondary)]">+ VAT</span>
           </div>
         </div>
 

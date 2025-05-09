@@ -5,39 +5,43 @@
 
 @layer base {
   :root {
-    --color-background: #f9fafb;        /* softer white */
-    --color-foreground: #1f2937;        /* slate-800 */
-    --color-primary: #f97316;           /* orange-500 (vivid and warm) */
-    --color-secondary: #475569;         /* slate-600 */
-    --color-accent: #10b981;            /* emerald-500 (used for success) */
-    --color-muted: #e5e7eb;             /* gray-200 for subtle backgrounds */
+    --color-background: #f9fafb;     
+    --color-foreground: #1e293b;        
+    --color-primary: #f97316;         
+    --color-secondary: #64748b;         
+    --color-accent: #10b981;          
+    --color-muted: #f3f4f6;             
+    --color-border: #e5e7eb;           
   }
+
   .dark {
-    --color-background: #0f172a;        /* slate-900 */
-    --color-foreground: #f8fafc;        /* very light for readability */
-    --color-primary: #fb923c;           /* orange-400 (slightly softer in dark) */
-    --color-secondary: #94a3b8;         /* slate-400 */
-    --color-accent: #34d399;            /* emerald-400 */
-    --color-muted: #1e293b;             /* slate-800 */
+    --color-background: #111827;   
+    --color-foreground: #f9fafb;      
+    --color-primary: #f97316;         
+    --color-secondary: #cbd5e1;       
+    --color-accent: #22c55e;          
+    --color-muted: #1e293b;           
+    --color-border: #334155;         
   }
+  
+
   body {
-    @apply bg-[var(--color-background)] text-[var(--color-foreground)] transition-colors duration-300 min-h-screen flex flex-col items-center justify-center;
+    @apply bg-[var(--color-background)] text-[var(--color-foreground)] transition-colors duration-300;
+  }
+
+  #root {
+    @apply flex flex-col min-h-screen w-full;
+  }
+
+  .main-container {
+    @apply flex flex-col items-center w-full max-w-7xl mx-auto px-4 py-8;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold text-[var(--color-foreground)];
+  }
+
+  button {
+    @apply transition-colors duration-200;
   }
 }
-
-#root {
-  @apply flex flex-col items-center justify-center min-h-screen w-full;
-}
-
-.main-container {
-  @apply flex flex-col items-center justify-center w-full max-w-7xl mx-auto px-4 py-8;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  @apply font-bold text-[var(--color-foreground)] dark:text-[var(--color-foreground)];
-}
-
-button {
-  @apply transition-colors duration-200;
-}
-
