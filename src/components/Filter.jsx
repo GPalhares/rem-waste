@@ -1,4 +1,6 @@
+// components/Filter.jsx
 import React, { useState, useMemo, useEffect } from "react";
+import CustomButton from "./CustomButton";
 
 const FILTERS = [
   { label: "All", value: "all" },
@@ -22,21 +24,16 @@ export default function Filter({ options, onChange }) {
   }, [filteredOptions, onChange]);
 
   return (
-    <div className="flex py-4 flex-wrap gap-2 justify-end w-full">
+    <div className="flex pt-12 pb-4 flex-wrap gap-2 justify-end w-full ">
       {FILTERS.map((f) => (
-        <button
+        <CustomButton
           key={f.value}
+          isActive={filter === f.value}
           onClick={() => setFilter(f.value)}
-          aria-pressed={filter === f.value}
-          className={`cursor-pointer px-3 sm:px-4 py-1 rounded-lg border text-xs sm:text-sm font-medium transition whitespace-nowrap
-            ${
-              filter === f.value
-                ? "bg-[var(--color-primary)] text-white border-[var(--color-primary)] shadow"
-                : "bg-[var(--color-muted)] text-[var(--color-secondary)] border-[var(--color-muted)]"
-            }`}
+          invertColors={true}
         >
           {f.label}
-        </button>
+        </CustomButton>
       ))}
     </div>
   );

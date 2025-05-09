@@ -7,30 +7,42 @@ import Filter from "../components/Filter";
 
 export default function Skip() {
   const { options, loading, error } = useSkipOptions();
+  const [selectedSkipId, setSelectedSkipId] = useState(null);
   const [filteredOptions, setFilteredOptions] = useState([]);
 
   if (loading)
-    return <div className="text-center py-8">Loading skip options...</div>;
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        Loading skip options...
+      </div>
+    );
   if (error)
     return (
-      <div className="text-center py-8 text-red-500">
+      <div className="min-h-screen flex items-center justify-center text-red-500">
         Error loading skip options.
       </div>
     );
 
   return (
-    <div className="main-container">
+    <div className="w-full">
       <Header />
       <Stepper />
       <Filter options={options} onChange={setFilteredOptions} />
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
+      <div className="flex-grow grid grid-cols-1 lg:grid-cols-3 gap-8 w-full">
         {filteredOptions.length === 0 ? (
           <div className="col-span-full text-center text-zinc-400 py-12">
             No skips match this filter.
           </div>
         ) : (
-          filteredOptions.map((skip) => <SkipCard key={skip.id} skip={skip} />)
+          filteredOptions.map((skip) => (
+            <SkipCard
+              key={skip.id}
+              skip={skip}
+              isSelected={selectedSkipId === skip.id}
+              onSelect={() => setSelectedSkipId(skip.id)}
+            />
+          ))
         )}
       </div>
     </div>

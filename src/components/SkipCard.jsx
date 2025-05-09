@@ -1,44 +1,68 @@
 import React from "react";
 import { Truck } from "lucide-react";
+import Tags from "./Tags";
+import CustomButton from "./CustomButton";
 
-export default function SkipCard({ skip }) {
+const skipImages = {
+  "4 Yard Skip": "/images/4-Yard-skip.png",
+  "6 Yard Skip": "/images/6-Yard-skip.png",
+  "8 Yard Skip": "/images/8-Yard-skip.png",
+  "10 Yard Skip": "/images/10-Yard-skip.png",
+  "12 Yard Skip": "/images/12-Yard-skip.png",
+  "14 Yard Skip": "/images/20-Yard-skip.png",
+  "16 Yard Skip": "/images/20-Yard-skip.png",
+  "20 Yard Skip": "/images/40-Yard-skip.png",
+  "40 Yard Skip": "/images/40-Yard-skip.png",
+};
+
+export default function SkipCard({ skip, isSelected, onSelect }) {
   return (
-    <div className="bg-surface-light dark:bg-gradient-to-br dark:from-zinc-900 dark:to-zinc-800 border border-zinc-200 dark:border-zinc-700 rounded-2xl shadow-lg p-6 flex flex-col gap-3 hover:scale-[1.025] hover:shadow-2xl transition-transform duration-200">
-      <div className="flex items-center justify-between mb-2">
-        <span className="flex items-center gap-2 text-lg font-bold text-primary dark:text-blue-400">
-          <Truck className="w-6 h-6 text-primary dark:text-blue-500" />
-          {skip.size} Yard Skip
-        </span>
-        <span className="text-xs px-2 py-1 rounded bg-surface dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 border border-zinc-200 dark:border-zinc-700">
+    <div
+      className={`w-[380px] h-[300px] bg-white dark:bg-zinc-900 rounded-2xl shadow-md p-4 flex flex-col gap-2 transition-transform duration-200 ease-in-out hover:scale-[1.01] ${
+        isSelected ? "ring-2 ring-[var(--color-primary)]" : ""
+      }`}
+      onClick={onSelect}
+    >
+      {/* Header */}
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-2 text-lg font-semibold text-zinc-800 dark:text-white">
+          <Truck className="w-5 h-5 text-primary dark:text-blue-400" />
+          <span>{skip.size} Yard Skip</span>
+        </div>
+        <span className="text-xs px-2 py-0.5 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300">
           {skip.hire_period_days} days
         </span>
       </div>
-      <div className="text-3xl font-extrabold text-success dark:text-green-400 mb-1">
-        £{skip.price_before_vat}
+
+      <Tags skip={skip} />
+
+      {/* Price & Image */}
+      <div className="flex-grow flex items-center justify-between gap-4">
+        <div>
+          <div className="text-4xl font-bold text-green-600 dark:text-green-400">
+            £{skip.price_before_vat}
+          </div>
+          <div className="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">
+            + VAT: {skip.vat}%
+          </div>
+        </div>
+        <img
+          src={
+            skipImages[`${skip.size} Yard Skip`] || "/images/4-Yard-skip.png"
+          }
+          alt={`${skip.size} Yard Skip`}
+          className="w-32 h-24 object-contain rounded-lg dark:bg-zinc-800 p-1"
+        />
       </div>
-      <div className="text-xs text-zinc-500 dark:text-zinc-400 mb-2">
-        + VAT: {skip.vat}%
-      </div>
-      <div className="flex flex-wrap gap-2 mt-auto">
-        <span
-          className={`text-xs px-2 py-1 rounded font-semibold border ${
-            skip.allowed_on_road
-              ? "bg-success-light dark:bg-green-700/20 text-success dark:text-green-300 border-success dark:border-green-700"
-              : "bg-red-100 dark:bg-red-700/20 text-red-600 dark:text-red-300 border-red-200 dark:border-red-700"
-          }`}
-        >
-          {skip.allowed_on_road ? "Allowed on Road" : "Not Allowed on Road"}
-        </span>
-        <span
-          className={`text-xs px-2 py-1 rounded font-semibold border ${
-            skip.allows_heavy_waste
-              ? "bg-success-light dark:bg-green-700/20 text-success dark:text-green-300 border-success dark:border-green-700"
-              : "bg-amber-100 dark:bg-yellow-700/20 text-amber-700 dark:text-yellow-300 border-amber-200 dark:border-yellow-700"
-          }`}
-        >
-          {skip.allows_heavy_waste ? "Allows Heavy Waste" : "No Heavy Waste"}
-        </span>
-      </div>
+
+      <CustomButton
+        className="mt-auto"
+        onClick={onSelect}
+        disabled={isSelected}
+        isActive={isSelected}
+      >
+        {isSelected ? "Selected" : "Select This Skip"}
+      </CustomButton>
     </div>
   );
 }
