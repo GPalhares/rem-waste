@@ -44,8 +44,8 @@ export default function Stepper() {
       className="z-40 w-full bg-background border-b border-[var(--color-muted)] px-4 py-3"
       aria-label="Progress steps"
     >
-      <div className="pb-5 sm:pb-0 sm:mt-0 overflow-x-auto sm:overflow-x-hidden">
-        <ol className="relative flex sm:space-x-12 sm:space-y-0 sm:space-x-8 rtl:space-x-reverse w-full">
+      <div className="pb-5 sm:pb-0 sm:mt-0 overflow-x-auto">
+        <ol className="relative flex flex-nowrap sm:space-x-12 sm:space-y-0 sm:space-x-8 rtl:space-x-reverse w-full">
           <div className="absolute top-1/2 left-0 w-full h-0.5 bg-muted -translate-y-1/2 z-0" />
 
           {steps.map((step, idx) => {
@@ -55,7 +55,7 @@ export default function Stepper() {
             return (
               <li
                 key={step.label}
-                className={`relative flex items-center text-gray-500 dark:text-gray-400 space-x-2.5 rtl:space-x-reverse z-10 flex-col sm:flex-row mx-4`}
+                className={`relative flex items-center text-gray-500 dark:text-gray-400 space-x-2.5 rtl:space-x-reverse z-10 flex-col sm:flex-row mx-4 min-w-[80px] sm:min-w-[151px]`}
               >
                 <span
                   className={`
