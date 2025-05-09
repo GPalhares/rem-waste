@@ -17,8 +17,8 @@ export default function NotFound() {
       <div className="max-w-2xl mb-8">
         <p className="text-[var(--color-foreground)] mb-4">
           This page represents a reimplementation of the previous Skip Hire
-          Booking System. The interface and functionality were improved for a
-          more modern, performant, and user-friendly experience.
+          Page. The interface and functionality were improved for a more modern,
+          performant, and user-friendly experience.
         </p>
         <p className="text-[var(--color-foreground)] mb-4">
           Thank you for reviewing this challenge. If you’d like to explore more
